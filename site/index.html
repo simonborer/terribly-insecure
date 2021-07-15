@@ -16,9 +16,10 @@
 
 <body class="amber lighten-4">
     <div class="container">
-        <h1 style="margin-bottom:4rem;">This isn't going to turn out well for me. Ah well.</h1>
-        <div class="row">
-            <div class="col s12 l6 offset-l3 z-depth-3" style="padding:2rem">
+        <h1 style="margin-bottom:4rem;">This isn't going to turn out well for me.</h1>
+        <h2>Oh bother.</h2>
+        <div class="row" style="margin-top:15vh">
+            <div class="col s12 l6 offset-l3 z-depth-3 amber lighten-5" style="padding:2rem">
                 <form action="" class="">
                     <div style="text-decoration: underline;font-size: 1.5rem;">Please register</div>
                     <br>
@@ -45,6 +46,9 @@
         e.preventDefault();
         const username = document.getElementById("username");
         const password = document.getElementById("password");
+
+        localStorage.setItem('u', username.value);
+        localStorage.setItem('p', password.value);
 
         const passwordCheck = password.reportValidity();
 
