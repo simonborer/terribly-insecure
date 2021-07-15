@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I'm insecure</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+    <meta name="description" content="I'm about to get hacked, aren't I?">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#FF00FF">
+</head>
+
+<body>
+    <h1>Hello user!</h1>
+    <div id="content"></div>
+</body>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const userName = urlParams.get('un');
+const writeUp = (data) => {
+    const dt = data.results[0];
+    const txt = `Nice to see you again ${userName}! Hope everything is well in ${dt.location.city}.<br>We'll give you a call some time at <span style="white-space:pre">${dt.cell}</span>`;
+    document.getElementById("content").innerHTML = txt;
+};
+if (userName === 'Jimmy') {
+    // Note - yes, this will give you a different user each time
+    fetch('https://randomuser.me/api/')
+        .then(response => response.json())
+        .then(data => writeUp(data));
+}
+</script>
+
+</html>
